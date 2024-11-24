@@ -1,0 +1,18 @@
+Boot:
+  Power on or Reset switches to address bank 0, which is EPROM, and starts at address 0000
+
+  There resides "Booter"
+  "Booter" copies a "monitor" program to common Memory residing at F000, then jumps to that address
+
+  The "monitor" at F000 initializes the memory structures, interrupt table and serial interface chips and the timer Chips
+  to be ready for serial communications.
+
+  Then it runs the RDK (Rolf-Dieter Klein) monitor I have taken from his book and waits for user Input.
+
+  Bank should now be switched to bank 4, which is RAM.
+
+Further operation:
+  User can opt to interact with the monitor: loading/saving from/to cassette, reading/burning EPROM, modify or view Memory Locations
+
+  Or the user can load the BASIC Interpreter (TDL design labs, free after they have ceased operations).
+  BASIC is copied from EPROM (bank 0) via "high memory" (>FF00...) to RAM (bank 4), then started.
